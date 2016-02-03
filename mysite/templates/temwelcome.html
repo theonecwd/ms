@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+   <title>Bootstrap 实例 - 图像</title>
+   <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+   <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<!--img src="{ % static "pic/welcome.jpg" %}"
+   class="img-rounded"-->
+<div class="container">
+      <h2>图片</h2>
+      <p> .img-responsive类让图片支持响应式，将很好地扩展到父元素 (通过改变窗口大小查看效果):</p>                  
+      <img src="{% static "pic/1.jpg" %}" class="img-responsive" alt="Cinque Terre" width="904" height="636"> 
+    </div>
+
+   <p>hello world</p>
+<img src="{% static "pic/1.jpg" %}" />
+</body>
+</html>

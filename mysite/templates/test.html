@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block title %}
+    修改密码	
+{% endblock title %}
+{% block content %}
+	<div class="containter">
+		<div class="row text-center">
+			<h2>修改密码</h2>
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				{% if state == 'error' %}
+                 alert("yes")
+					<div class="well">
+						<h2 class="text-danger text-center">修改密码失败</h2>
+					</div>
+				{% elif state == 'success' %}
+					<div class="well">
+						<h2 class="text-success text-center">修改密码成功！</h2>
+					</div>
+				{% endif %}
+<form class="form-horizontal">
+    <fieldset>
+      <div id="legend" class="">
+        <legend class="">表单名</legend>
+      </div>
+    <div class="control-group">
+
+          <!-- Text input-->
+          <label class="control-label" for="input01">原始密码</label>
+          <div class="controls">
+            <input placeholder="原始密码" class="input-xlarge" type="text">
+            <p class="help-block"></p>
+          </div>
+        </div>
+
+    <div class="control-group">
+
+          <!-- Text input-->
+          <label class="control-label" for="input01">新密码</label>
+          <div class="controls">
+            <input placeholder="新密码" class="input-xlarge" type="text">
+            <p class="help-block"></p>
+          </div>
+        </div>
+
+    <div class="control-group">
+
+          <!-- Text input-->
+          <label class="control-label" for="input01">确认密码</label>
+          <div class="controls">
+            <input placeholder="确认密码" class="input-xlarge" type="text">
+            <p class="help-block"></p>
+          </div>
+        </div>
+    <div class="control-group">
+          <label class="control-label"></label>
+
+          <!-- Button -->
+          <div class="controls">
+            <button class="btn btn-success">确定</button>
+          </div>
+        </div>
+
+    </fieldset>
+  </form>
+				<form class="form-horizontal" method="post">
+					{% csrf_token %}
+					<div class="form-group">
+						<label for="id-name" class="col-md-4 control-label">原始密码：</label>
+						<div class="col-md-9">
+							<input type="password" class="form-control" id="old_password" name='old_password' required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="id-name" class="col-md-4 control-label">新密码：</label>
+						<div class="col-md-9">
+							<input type="password" class="form-control" id="new_password_1" name='new_password_1' required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="id-name" class="col-md-4 control-label">确认密码：</label>
+						<div class="col-md-9">
+							<input type="password" class="form-control" id="new_password_2" name='new_password_2' onkeyup="validate()"required>
+                            <span id ="tishi"></span>
+						</div>
+					</div>
+					<div class="form-group text-center">
+						<button type="submit" class="btn btn-primary" id="submit">提交</button>
+						<button type="reset" class="btn btn-primary">重置</button>
+						<!--a href="/" class="btn btn-default">返回</a-->
+					</div>
+				</form>
+                <script>
+                function validate() {
+                    var pw1 = document.getElementById("new_password_1").value;
+                    var pw2 = document.getElementById("new_password_2").value;
+                    if(pw1 == pw2) {
+                        document.getElementById("tishi").innerHTML="<font color='green'>ok</font>";
+                        document.getElementById("submit").disabled = false;
+                    }
+                    else {
+                        document.getElementById("tishi").innerHTML="<font color='red'>两次的密码不一致</font>";
+                    document.getElementById("submit").disabled = true;
+                    }
+                }
+                </script>
+
+			</div>
+		</div>
+	</div>
+{% endblock content %}
